@@ -3,7 +3,7 @@ import React from "react";
 const Banner = () => {
   return (
     <div
-      className="w-full h-80 md:h-96 flex items-center justify-center relative bg-center bg-cover md:w-full"
+      className="w-full h-80 md:h-96 flex items-center justify-center mb-6 relative bg-center bg-cover md:w-full"
       style={{ backgroundImage: "url('/assets/banner-1.png')" }}
     >
       {/* Overlay for better text/button visibility */}

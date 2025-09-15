@@ -12,17 +12,17 @@ const Sample = () => {
   ];
   return (
     <div className="w-full p-4 md:p-6">
-      <div className="w-full text-lg md:text-xl lg:pl-10 lg:text-2xl font-[Inter] mb-4 md:mb-6">
+      <div className="w-full text-lg md:text-xl lg:text-2xl font-[Inter] mb-4 md:mb-6">
         <h2>Shop Our Top Categories</h2>
       </div>
-      <div className="grid md:px-3 lg:pl-10 grid-cols-3 gap-4 md:gap-0 lg:gap-0 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6">
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-3">
         {product_sample.map((pro, i) => (
           <div
             key={i}
-            className="w-24 relative transition md:hover:scale-110 h-24 md:h-38 md:w-38 lg:h-40 lg:w-40"
+            className="relative transition md:hover:scale-110"
           >
             <img
-              className="w-full h-full md:w-full md:h-full lg:w-full lg:h-full rounded-lg"
+              className="w-full lg:h-40 md:h-36 h-28 rounded-lg" 
               src={pro.img}
               alt="product"
             />
