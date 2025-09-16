@@ -11,7 +11,7 @@ const Sample = () => {
     
   ];
   return (
-    <div className="w-full p-4 md:p-6">
+    <div className="w-full p-4 md:p-6 mb-6">
       <div className="w-full text-lg md:text-xl lg:text-2xl font-[Inter] mb-4 md:mb-6">
         <h2>Shop Our Top Categories</h2>
       </div>
@@ -26,7 +26,7 @@ const Sample = () => {
               src={pro.img}
               alt="product"
             />
-            <span className="absolute hidden whitespace-nowrap md:block top-1 px-4 md:px-14 py-1 text-lg text-white font-medium">
+            <span className="absolute hidden whitespace-nowrap md:block top-1 ml-18 py-1 text-lg text-white font-medium">
               {pro.name}
             </span>
           </div>

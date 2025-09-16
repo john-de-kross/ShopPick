@@ -10,9 +10,9 @@ const TopBar = () => {
           <p className="text-gray-200 text-xs font-medium">+2348133044482</p>
         </div>
         <div className="ad flex gap-2 text-gray-50 text-xs font-medium">
-          <p>Get 50% discount on selected </p>
+          <p>Get 50% discount on selected items</p>
           <span>|</span>
-          <p>Shop Now</p>
+          <p className="cursor-pointer hover:text-gray-200 hover:opacity-35">Shop Now</p>
         </div>
         <div className="signin flex gap-2 text-gray-200 md:text-xs lg:text-xs font-[Ubuntu]">
           <a className="hover:underline hover:opacity-35" href="">
@@ -25,11 +25,11 @@ const TopBar = () => {
         </div>
         <div className="Geographical flex gap-4">
           <div className="flex cursor-pointer gap-1 text-xs text-gray-100">
-            <p>Eng</p>
+            <p className="cursor-pointer">Eng</p>
             <ChevronDown className="w-4 h-4" />
           </div>
           <div className="location flex gap-1 text-xs text-gray-100">
-            <p>Location</p>
+            <p className="cursor-pointer">Location</p>
             <ChevronDown className="w-4 h-4" />
           </div>
         </div>

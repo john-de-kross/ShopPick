@@ -6,6 +6,7 @@ import TopBar from './NAVBAR/TopBar';
 import Navbar from './NAVBAR';
 import Banner from './BANNER';
 import Sample from './SAMPLE/indeex';
+import Footer from './FOOTER';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       <Navbar />
       <Banner />
       <Sample />
+      <Footer />
       
       
       
