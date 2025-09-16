@@ -10,6 +10,7 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import MobileNav from "./mobileNav";
+import Dropdown from "./CATEDROP";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,10 @@ const Navbar = () => {
     <nav className="w-full flex justify-between lg:flex-1 px-4 md:px-9 bg-green-900 lg:bg-stone-50 md:bg-stone-50 lg:h-14 h-16 md:h-20">
       <div className="menu flex items-center gap-2">
         {isOpen ? (
-          <button onClick={() => setIsOpen(false)} className="md:hidden border-1 absolute right-5 z-50 mt-14 border-gray-200">
+          <button
+            onClick={() => setIsOpen(false)}
+            className="md:hidden border-1 absolute right-5 z-50 mt-14 border-gray-200"
+          >
             <X className="text-gray-100 w-5 h-5 " />
           </button>
         ) : (
@@ -38,10 +42,14 @@ const Navbar = () => {
       </div>
       <div className=" flex md:px-1">
         <ul className="flex items-center gap-4 w-full lg:gap-6 md:gap-7 md:pl-9 text-base lg:text-lg font-[Ubuntu]">
-          <li className="hidden md:flex gap-1.5 md:items-center">
-            Category
+          <li className="hidden relative md:flex md:items-center group">
+            <span className="flex gap-1.5">
+              Category
             <ChevronDown className="w-4 h-4 mt-2" />
+            </span>
+            <Dropdown />
           </li>
+
           <li className="hidden md:flex">Deals</li>
           <li className="hidden md:flex whitespace-nowrap">What's New</li>
           <li className="hidden md:flex">Delivery</li>

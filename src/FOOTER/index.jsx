@@ -48,7 +48,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="contact px-2 md:px-0 mt-2 md:mt-8">
-          <h3 className="text-gray-300 text-base mb-0 md:text-xl md:mb-4">COMPANY</h3>
+          <h3 className="text-gray-300 text-base mb-2 md:text-xl md:mb-4">COMPANY</h3>
           <ul className="text-gray-400 text-sm md:text-base flex gap-2 font-[Ubuntu] flex-col">
             <li>About Us</li>
             <li>Contact Us</li>
@@ -84,7 +84,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex justify-center w-full text-center pb-4">
-        <p className="text-gray-300 text-xs md:text-base font-[Montserrat]">(c) 2025 ShopPick Nigeria. All Rights Reserved</p>
+        <p className="text-gray-300 text-xs md:text-sm font-[Montserrat]">(c) 2025 ShopPick Nigeria. All Rights Reserved</p>
       </div>
     </footer>
   );
