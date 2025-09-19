@@ -35,21 +35,53 @@ const Dropdown = () => {
           ))}
         </div>
       </li>
-      <li className="flex justify-between px-4 py-2 font-[Ubuntu] hover:bg-gray-100">
+      <li className="flex justify-between group/submenu px-4 py-2 font-[Ubuntu] hover:bg-gray-100">
         <a href="#" className="block">
           Electronics
         </a>
         <button>
           <ChevronRight className="w-5 h-5 text-gray-500" />
         </button>
+        <div className="absolute hidden group-hover/submenu:block top-0 left-full w-56 bg-white rounded-lg shadow-lg z-50">
+          {[
+            "Television",
+            "Gadgets",
+            "Home Theaters",
+            "Audio System",
+            "Video System",
+            "Accessories",
+          ].map((item, i) => (
+            <a
+              key={i}
+              href="#"
+              className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition-colors duration-200"
+            >
+              {item}
+            </a>
+          ))}
+        </div>
       </li>
-      <li className="flex justify-between px-4 py-2 font-[Ubuntu] hover:bg-gray-100">
+      <li className="flex  relative justify-between group/submenu px-4 py-2 font-[Ubuntu] hover:bg-gray-100">
         <a href="#" className="block">
           Power Supplies
         </a>
         <button>
           <ChevronRight className="w-5 h-5 text-gray-500" />
         </button>
+        <div className="absolute hidden group-hover/submenu:block right-full z-50 bg-white shadow-lg rounded top-0 w-56">
+          {[
+            "Power Systems",
+            "Surge Protectors",
+            "Inverters",
+            "Voltage Stabilizer",
+            "Solar",
+            "APC Power",
+            "Lightning Products",
+            "Generators",
+          ].map((item) => (
+            <a  className="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded-md transition-colors duration-200" href="">{item}</a>
+          ))}
+        </div>
       </li>
       <li className="flex justify-between px-4 py-2 font-[Ubuntu] hover:bg-gray-100">
         <a href="#" className="block">
