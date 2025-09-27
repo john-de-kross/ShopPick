@@ -1,8 +1,11 @@
-import { ChevronDown, ListFilterPlus } from "lucide-react";
-import React from "react";
+import { ChevronDown, ContrastIcon, ListFilterPlus } from "lucide-react";
+import React, { useEffect, useState } from "react";
 import ProductList from "./ProductList";
 
+
 const Product = () => {
+
+
   return (
     <div className="w-full">
       <section className="hero-section">

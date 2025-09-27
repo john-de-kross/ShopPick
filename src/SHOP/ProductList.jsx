@@ -1,15 +1,57 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { products } from "../PRODUCTS";
 import { Star } from "lucide-react";
 
 const ProductList = () => {
+  const allProducts = products;
+  const [productVisibility, setProductVisibility] = useState([]);
+  const [page, setPage] = useState(1);
+  const loader = useRef(null);
+
+  const items_per_page = 4;
+
+  const loadProduct = (page) => {
+    const start = (page - 1) * items_per_page;
+    const end = start + items_per_page;
+    const newBatch = allProducts.slice(start, end);
+    setProductVisibility((prev) => [...prev, ...newBatch]);
+  };
+
+  useEffect(() => {
+    loadProduct(page);
+  }, [page]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          if (productVisibility.length < allProducts.length) {
+            setPage((prev) => prev + 1);
+          }
+        }
+      },
+      { threshold: 1 }
+    );
+
+    if (loader.current) observer.observe(loader.current);
+
+    return () => {
+      if (loader.current) observer.unobserve(loader.current);
+      observer.disconnect()
+    };
+
+    
+  }, [productVisibility]);
+
   return (
     <div className="h-screen w-full mt-8 md:px-16">
       <div className="product-header flex font-bold mb-4">
-        <h2 className="text-lg md:text-xl lg:text-2xl font-bold">Items for you</h2>
+        <h2 className="text-lg md:text-xl lg:text-2xl font-bold">
+          Items for you
+        </h2>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3 lg:gap-6">
-        {products.map((item) => (
+        {productVisibility.map((item) => (
           <div className="">
             <div
               key={item.id}
@@ -39,11 +81,17 @@ const ProductList = () => {
                   {item.rating}
                   <Star className="md:w-3 md:h-3 w-2 h-2 fill-gray-100" />
                 </div>
-                <p className="font-[400] text-sm md:text-base text-gray-600">({item.reviews})</p>
+                <p className="font-[400] text-sm md:text-base text-gray-600">
+                  ({item.reviews})
+                </p>
               </div>
             </div>
           </div>
         ))}
+        <div ref={loader}>
+          {productVisibility.length < allProducts.length ? "Loading more" : ""}
+
+        </div>
       </div>
     </div>
   );
