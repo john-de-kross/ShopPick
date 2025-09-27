@@ -7,17 +7,14 @@ import Navbar from './NAVBAR';
 import Banner from './BANNER';
 import Sample from './SAMPLE/indeex';
 import Footer from './FOOTER';
+import Shop from './SHOP';
 
 function App() {
 
 
   return (
     <>
-      <TopBar />
-      <Navbar />
-      <Banner />
-      <Sample />
-      <Footer />
+      <Shop />
       
       
       
