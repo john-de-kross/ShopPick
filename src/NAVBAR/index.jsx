@@ -76,8 +76,8 @@ const Navbar = () => {
       <AnimatePresence>
         <motion.div
           key="menu"
-          initial={{ x: -300, opacity: 1 }}
-          animate={isOpen ? { x: 0, opacity: 1 } : { x: -300, opacity: 1 }}
+          initial={{ x: -600, opacity: 1 }}
+          animate={isOpen ? { x: 0, opacity: 1 } : { x: -600, opacity: 1 }}
           transition={{ duration: 0.9, ease: "easeInOut" }}
           className="absolute md:hidden z-20 bg-gray-100 w-10/12 h-screen inset-0"
         >
