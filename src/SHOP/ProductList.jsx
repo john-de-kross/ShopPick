@@ -46,11 +46,11 @@ const ProductList = () => {
   return (
     <div className="h-screen w-full mt-8 md:px-16">
       <div className="product-header flex font-bold mb-4">
-        <h2 className="text-lg md:text-xl lg:text-2xl font-bold">
+        <h2 className="text-lg md:text-xl px-2 md:px-0 lg:text-2xl font-bold">
           Items for you
         </h2>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3 lg:gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 px-2 md:px-0 lg:grid-cols-4 gap-2 md:gap-3 lg:gap-6">
         {productVisibility.map((item) => (
           <div className="">
             <div

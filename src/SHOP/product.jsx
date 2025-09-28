@@ -33,7 +33,7 @@ const Product = () => {
         </div>
       </section>
       <section className="filter mt-4">
-        <div className="w-full lg:w-11/12 mx-0 px-6 lg:px-0 lg:mx-auto flex items-center justify-between">
+        <div className="w-full lg:w-11/12 mx-0 px-2 lg:px-0 lg:mx-auto flex items-center justify-between">
           <div className="flex md:hidden">
             <button className="flex text-bas font-medium gap-2 items-center">
               <svg
