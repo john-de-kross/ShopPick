@@ -1,21 +1,44 @@
 import React, { useEffect, useRef, useState } from "react";
 import { products } from "../PRODUCTS";
-import { Star } from "lucide-react";
+import { HeartPlus, Star } from "lucide-react";
 
 const ProductList = () => {
   const allProducts = products;
   const [productVisibility, setProductVisibility] = useState([]);
   const [page, setPage] = useState(1);
+  const [productPage, setProductPage] = useState(1);
+  const [windowView, setWindowView] = useState(window.innerWidth);
   const loader = useRef(null);
 
   const items_per_page = 4;
+  const num_per_page = 16;
+  const totalPages = 1 + Math.floor((allProducts.length - 1) / num_per_page)
+
+  const handlePrev = () => {
+    setProductPage((prev) => prev <= 1 ? prev : prev - 1)
+  }
+
+  const handleNextBtn = () => {
+    setProductPage((prev) => prev >= totalPages ? prev : prev + 1)
+  }
 
   const loadProduct = (page) => {
+    if (windowView > 768) return;
     const start = (page - 1) * items_per_page;
     const end = start + items_per_page;
     const newBatch = allProducts.slice(start, end);
     setProductVisibility((prev) => [...prev, ...newBatch]);
   };
+
+  useEffect(() => {
+    const handleWindowSize = () => {
+      setWindowView(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleWindowSize);
+
+    return () => window.removeEventListener("resize", handleWindowSize);
+  }, []);
 
   useEffect(() => {
     loadProduct(page);
@@ -37,11 +60,27 @@ const ProductList = () => {
 
     return () => {
       if (loader.current) observer.unobserve(loader.current);
-      observer.disconnect()
+      observer.disconnect();
     };
-
-    
   }, [productVisibility]);
+
+  // targeted number of items on page
+  useEffect(() => {
+    if (windowView <= 768) {
+      setProductVisibility(allProducts);
+      return;
+    }
+    const start = (productPage - 1) * num_per_page;
+    const end = start + num_per_page;
+    const batch = allProducts.slice(start, end);
+
+    setProductVisibility(batch);
+  }, [windowView, productPage]);
+
+  const handleNextPage = (e) => {
+    const num = Number(e.target.innerText);
+    setProductPage(num);
+  };
 
   return (
     <div className="h-screen w-full mt-8 md:px-16">
@@ -55,8 +94,11 @@ const ProductList = () => {
           <div className="">
             <div
               key={item.id}
-              className="hover:shadow-lg bg-gray-100 p-4 shadow-md rounded-lg transition"
+              className="relative hover:shadow-lg bg-gray-100 p-4 shadow-md rounded-lg transition"
             >
+              <button className="absolute bg-white w-6 h-6 p-1 right-4 rounded">
+                <HeartPlus className="w-4 h-4" />
+              </button>
               <img
                 className="w-full object-contain h-32 md:h-40 mb-3"
                 src={item.image}
@@ -66,7 +108,7 @@ const ProductList = () => {
             <div className="flex flex-col gap-1.5 mt-2">
               <div className="flex justify-between">
                 <p className="text-base font-medium">{item.name}</p>
-                <p className="text-base font-medium">
+                <p className="md:text-base text-sm font-[300] whitespace-nowrap md:font-medium">
                   <sup>$</sup>
                   {item.price} <sup className="text-xs">00</sup>
                 </p>
@@ -89,8 +131,42 @@ const ProductList = () => {
           </div>
         ))}
         <div ref={loader}>
-          {productVisibility.length < allProducts.length ? "Loading more" : ""}
-
+          {productVisibility.length < allProducts.length && windowView <= 768
+            ? "Loading more"
+            : ""}
+        </div>
+      </div>
+      <div className="pages hidden md:flex justify-start mt-5 gap-8 items-center">
+        <div className="page-count">
+          <p className="text-base font-normal">
+            Page {productPage} of {totalPages}
+          </p>
+        </div>
+        <div className="page flex gap-9 pl-6">
+          <p
+            onClick={handlePrev}
+            className={`text-green-700 cursor-pointer transition-colors duration-200 hover:text-green-200 text-lg font-[500] ${
+              productPage < 2 ? "opacity-25  text-gray-400" : ""
+            }`}
+          >
+            Previous
+          </p>
+          <p className="flex gap-7 font-medium leading-loose items-center">
+            {Array.from({length: totalPages}, (_, i) => i + 1).map((num, idx) => (
+              <p
+                key={idx}
+                onClick={handleNextPage}
+                className={`cursor-pointer ${
+                  productPage === num
+                    ? "bg-green-600 flex justify-center items-center w-6 h-6 rounded-full text-gray-100"
+                    : ""
+                }`}
+              >
+                {num}
+              </p>
+            ))}
+          </p>
+          <p onClick={handleNextBtn} className={`text-green-700 cursor-pointer ${productPage === totalPages ? 'opacity-50' : ''} transition-colors duration-200 hover:text-green-300 text-lg font-[500] `}>Next</p>
         </div>
       </div>
     </div>
