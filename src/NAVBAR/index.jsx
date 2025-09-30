@@ -41,18 +41,18 @@ const Navbar = () => {
         </div>
       </div>
       <div className=" flex md:px-1">
-        <ul className="flex items-center gap-4 w-full lg:gap-6 md:gap-7 md:pl-9 text-base lg:text-lg font-[Ubuntu]">
-          <li className="hidden relative md:flex md:items-center group">
-            <span className="flex gap-1.5">
+        <ul className="flex items-center  gap-4 w-full lg:gap-6 md:gap-7 md:pl-9 text-base lg:text-base">
+          <li className="hidden font-inter font-medium uppercase tracking-wide text-gray-800 hover:text-green-700 transition-colors duration-200 relative md:flex md:items-center group">
+            <span className="flex  gap-1.5">
               Category
             <ChevronDown className="w-4 h-4 mt-2" />
             </span>
             <Dropdown />
           </li>
 
-          <li className="hidden md:flex">Deals</li>
-          <li className="hidden md:flex whitespace-nowrap">What's New</li>
-          <li className="hidden md:flex">Delivery</li>
+          <li className="hidden font-inter font-medium uppercase tracking-wide text-gray-800 hover:text-green-700 transition-colors duration-200 md:flex">Deals</li>
+          <li className="hidden font-inter font-medium uppercase tracking-wide text-gray-800 hover:text-green-700 transition-colors duration-200 md:flex whitespace-nowrap">What's New</li>
+          <li className="hidden font-inter font-medium uppercase tracking-wide text-gray-800 hover:text-green-700 transition-colors duration-200 md:flex">Delivery</li>
           <li className="hidden relative lg:flex">
             <input
               className="outline-none bg-gray-200 h-8 p-2 w-60 rounded-2xl text-base font-serif"
