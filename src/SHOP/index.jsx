@@ -2,6 +2,7 @@ import React from "react";
 import TopBar from "../NAVBAR/TopBar";
 import Navbar from "../NAVBAR";
 import Product from "./product";
+import Footer from "../FOOTER";
 
 
 const Shop = () => {
@@ -10,6 +11,7 @@ const Shop = () => {
             <TopBar />
             <Navbar />
             <Product />
+    
         </div>
     )
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { products } from "../PRODUCTS";
 import { HeartPlus, Star } from "lucide-react";
+import Footer from "../FOOTER";
 
 const ProductList = () => {
   const allProducts = products;
@@ -169,6 +170,7 @@ const ProductList = () => {
           <p onClick={handleNextBtn} className={`text-green-700 cursor-pointer ${productPage === totalPages ? 'opacity-50' : ''} transition-colors duration-200 hover:text-green-300 text-lg font-[500] `}>Next</p>
         </div>
       </div>
+      
     </div>
   );
 };
