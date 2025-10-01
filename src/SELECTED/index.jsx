@@ -7,7 +7,7 @@ const SelectedItem = () => {
   const [frame, setFrame] = useState("s24.png");
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 768px");
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
 
     setIsMobile(mediaQuery.matches);
     const handleResize = (e) => setIsMobile(e.matches);
@@ -136,14 +136,14 @@ const SelectedItem = () => {
           </div>
         </div>
       </div>
-      <div className="w-full overflow-x-auto md:hidden flex flex-wrap sm:gap-x-0 gap-x-2 gap-y-2 justify-between px-2">
+      <div className="w-full overflow-auto md:hidden flex flex-wrap sm:gap-x-0 gap-x-2 gap-y-2 justify-between px-2">
         {productFrames.map((framer, index) => (
           <div
             key={index}
             onMouseEnter={!isMobile ? () => setFrame(framer) : null}
             onClick={isMobile ? () => setFrame(framer) : null}
             onMouseLeave={() => setFrame("s24.png")}
-            className={`flex justify-center items-center sm:w-36 sm:h-36 w-20 h-20 ${isMobile && framer === frame ? 'border border-blue-500' : ''} border hover:border-blue-700 transition duration-300 hover:scale-110 border-gray-300 rounded-md mb-3 cursor-pointer`}
+            className={`flex justify-center items-center border sm:w-36 sm:h-36 w-20 h-20 ${framer === frame ? 'border-2 border-sky-600' : ''}  border-gray-300 rounded-md`}
           >
             <img
               className="w-full h-full"
