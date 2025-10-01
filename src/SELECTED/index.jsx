@@ -136,18 +136,18 @@ const SelectedItem = () => {
           </div>
         </div>
       </div>
-      <div className="w-full md:hidden flex flex-wrap gap-x-2 gap-y-2 justify-between px-2">
-        {productFrames.map((frame, index) => (
+      <div className="w-full overflow-x-auto md:hidden flex flex-wrap sm:gap-x-0 gap-x-2 gap-y-2 justify-between px-2">
+        {productFrames.map((framer, index) => (
           <div
             key={index}
-            onMouseEnter={!isMobile ? () => setFrame(frame) : null}
-            onClick={isMobile ? () => setFrame(frame) : null}
+            onMouseEnter={!isMobile ? () => setFrame(framer) : null}
+            onClick={isMobile ? () => setFrame(framer) : null}
             onMouseLeave={() => setFrame("s24.png")}
-            className="flex justify-center items-center w-20 h-20 border hover:border-blue-700 transition duration-300 hover:scale-110 border-gray-300 rounded-md mb-3 cursor-pointer"
+            className={`flex justify-center items-center sm:w-36 sm:h-36 w-20 h-20 ${isMobile && framer === frame ? 'border border-blue-500' : ''} border hover:border-blue-700 transition duration-300 hover:scale-110 border-gray-300 rounded-md mb-3 cursor-pointer`}
           >
             <img
               className="w-full h-full"
-              src={`assets/${frame}`}
+              src={`assets/${framer}`}
               alt="product frame"
             />
           </div>
