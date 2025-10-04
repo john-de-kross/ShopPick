@@ -15,6 +15,20 @@ import Dropdown from "./CATEDROP";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"; 
+
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => document.body.style.overflow = "auto";
+
+   
+
+
+  }, [isOpen])
   return (
     <nav className="w-full flex justify-between lg:flex-1 px-4 md:px-9 bg-green-900 lg:bg-stone-50 md:bg-stone-50 lg:h-14 h-16 md:h-20">
       <div className="menu flex items-center gap-2">
