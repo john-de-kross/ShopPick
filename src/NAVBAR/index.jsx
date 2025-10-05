@@ -30,7 +30,7 @@ const Navbar = () => {
 
   }, [isOpen])
   return (
-    <nav className="w-full flex justify-between lg:flex-1 px-4 md:px-9 bg-green-900 lg:bg-stone-50 md:bg-stone-50 lg:h-14 h-16 md:h-20">
+    <nav className="fixed md:static w-full z-50 md:z-0 flex justify-between lg:flex-1 px-4 md:px-9 bg-green-900 lg:bg-stone-50 md:bg-stone-50 lg:h-14 h-16 md:h-20">
       <div className="menu flex items-center gap-2">
         {isOpen ? (
           <button

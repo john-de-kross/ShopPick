@@ -39,7 +39,7 @@ const SelectedItem = () => {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full py-7 md:py-0">
       <div className="grid md:p-4 w-full grid-cols-1 md:grid-cols-[10%_40%_50%] lg:grid-cols-[5%_30%_65%] md:min-h-[32rem] md:gap-2">
         <div className="hidden md:flex flex-col ">
           {productFrames.map((frame, index) => (
@@ -118,8 +118,8 @@ const SelectedItem = () => {
           </div>
         ))}
       </div>
-        <div className="details overflow-y-auto  max-h-[32rem] md:flex flex-col gap-3">
-          <h2 className="product-name font-bold text-lg">
+        <div className="details p-4 md:p-0 md:overflow-y-auto md:max-h-[32rem] md:flex flex-col gap-3">
+          <h2 className="product-name text-base font-bold md:text-lg">
             Samsung Galaxy Series Ultra 24
           </h2>
           <div className="des">
@@ -180,12 +180,12 @@ const SelectedItem = () => {
             </button>
           </div>
           <div className="color-choice flex flex-col gap-2">
-            <h3 className="text-lg font-medium">Choose color</h3>
+            <h3 className="text-base md:text-lg font-medium">Choose color</h3>
             <div className="flex gap-3 mt-2 items-center">
-              <div className="w-8 h-8 rounded-full bg-gray-800 border-2 border-gray-800 cursor-pointer"></div>
-              <div className="w-8 h-8 rounded-full bg-blue-800 border-2 border-blue-800 cursor-pointer"></div>
-              <div className="w-8 h-8 rounded-full bg-green-800 border-2 border-green-800 cursor-pointer"></div>
-              <div className="w-8 h-8 rounded-full bg-red-800 border-2 border-red-800 cursor-pointer"></div>
+              <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-gray-800 border-2 border-gray-800 cursor-pointer"></div>
+              <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-blue-800 border-2 border-blue-800 cursor-pointer"></div>
+              <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-green-800 border-2 border-green-800 cursor-pointer"></div>
+              <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-red-800 border-2 border-red-800 cursor-pointer"></div>
             </div>
           </div>
           <div className="add-item flex gap-4 flex-wrap items-center mt-4">
@@ -203,7 +203,7 @@ const SelectedItem = () => {
           </div>
           <div className="product Description w-11/12 mt-4 h-96">
             <div className="title flex px-4 border h-14 items-center border-gray-100">
-              <h2 className="text-lg font-semibold">PRODUCT DESCRIPTION</h2>
+              <h2 className="md:text-lg text-base font-semibold">PRODUCT DESCRIPTION</h2>
             </div>
             <div className="des flex flex-col border border-gray-100 px-4 py-3 md:flex-row gap-4 items-center md:items-start">
               {/* Image on the left */}
@@ -242,7 +242,7 @@ const SelectedItem = () => {
         </div>
       </div>
      
-      <div className="fixed bottom-2 w-full px-9 flex justify-between md:hidden">
+      <div className="fixed bottom-0 bg-white h-16 w-full px-9 gap-4 flex items-center justify-between md:hidden">
         <button className="h-9 w-28 bg-green-500 rounded-sm text-white font-medium">
           Add to Cart
         </button>
