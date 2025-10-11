@@ -19,7 +19,7 @@ const SelectedItem = () => {
     "s24-2.png",
   ];
   const [frame, setFrame] = useState("s24.png");
-  const [numItems, setNumItems] = useState(1)
+  const [numItems, setNumItems] = useState(1);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
@@ -31,17 +31,17 @@ const SelectedItem = () => {
   }, []);
 
   const handleIncrement = () => {
-    setNumItems(prev => prev + 1)
-  }
+    setNumItems((prev) => prev + 1);
+  };
 
   const handleDecrement = () => {
-    setNumItems(prev => prev <= 1 ? prev : prev - 1)
-  }
+    setNumItems((prev) => (prev <= 1 ? prev : prev - 1));
+  };
 
   return (
     <div className="w-full py-7 md:py-0">
-      <div className="grid md:p-4 w-full grid-cols-1 md:grid-cols-[10%_40%_50%] lg:grid-cols-[5%_30%_65%] md:min-h-[32rem] md:gap-2">
-        <div className="hidden md:flex flex-col ">
+      <div className="grid md:p-4 w-full grid-cols-1 md:grid-cols-[40%_60%] lg:grid-cols-[5%_30%_65%] md:min-h-[32rem] md:gap-2">
+        <div className="hidden md:hidden lg:flex flex-col ">
           {productFrames.map((frame, index) => (
             <div
               key={index}
@@ -58,7 +58,7 @@ const SelectedItem = () => {
             </div>
           ))}
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col  items-center">
           <div className="relative product-img w-full md:w-11/12 lg:w-full md:max-w-96 md:rounded-md aspect-[4/3]  bg-gray-100 h-96 flex justify-center items-center">
             <img
               className="w-full h-full bg-center object-contain"
@@ -88,37 +88,31 @@ const SelectedItem = () => {
               <span className="font-light text-sm ">2.3k +</span>
             </div>
           </div>
-          <div className="btns hidden md:flex text-white justify-between mt-4 md:px-2 lg:pr-4 gap-2 items-center">
-            <button className="lg:w-44 md:w-32 bg-green-500 flex justify-center items-center transition-all lg:text-xl duration-200 hover:bg-green-300 font-medium rounded-md shadow-sm cursor-pointer lg:h-14">
-              <ShoppingCart className="inline w-6 h-6 mr-2" />
-              ADD TO CART
-            </button>
-            <button className="lg:w-44 lg:h-14 md:w-32 bg-orange-700 font-medium lg:text-xl shadow-md rounded-sm cursor-pointer transition-all duration-200 hover:bg-orange-300">
-              <HeartPlus className="inline w-6 h-6 mr-2" />
-              BUY NOW
-            </button>
+          <div className="">
+            <div className="dot-img-scroll-indication flex lg:hidden justify-center gap-2 mt-3">
+              {productFrames.map((f, idx) => (
+                <span
+                  key={idx}
+                  className={`w-2 h-2 rounded-full transition ${
+                    frame === f ? "bg-blue-600" : "bg-gray-300"
+                  }`}
+                />
+              ))}
+            </div>
+            <div className="btns hidden md:flex text-white justify-between mt-4 lg:pr-4 gap-2 items-center">
+              <button className="lg:w-44 md:w-32 md:h-12 bg-green-500 flex justify-center items-center transition-all lg:text-xl duration-200 hover:bg-green-300 font-medium rounded-md shadow-sm cursor-pointer lg:h-14">
+                <ShoppingCart className="inline w-6 md:hidden lg:flex h-6 mr-2" />
+                ADD TO CART
+              </button>
+              <button className="lg:w-44 lg:h-14 md:w-32 md:h-12 flex justify-center items-center px-0 md:px-0 lg:px-4 bg-orange-700 font-medium lg:text-xl shadow-md rounded-sm cursor-pointer transition-all duration-200 hover:bg-orange-300">
+                <HeartPlus className="inline w-6 md:hidden lg:flex h-6 mr-2" />
+                BUY NOW
+              </button>
+            </div>
           </div>
         </div>
-         <div className="w-full overflow-x-auto mb-4 md:hidden flex sm:gap-x-0 gap-x-2 gap-y-2 justify-between px-2">
-        {productFrames.map((framer, index) => (
-          <div
-            key={index}
-            onMouseEnter={!isMobile ? () => setFrame(framer) : null}
-            onClick={isMobile ? () => setFrame(framer) : null}
-            onMouseLeave={() => setFrame("s24.png")}
-            className={`flex justify-center items-center border sm:w-36 sm:h-36 w-20 h-20 ${
-              framer === frame ? "border-2 border-sky-600" : ""
-            }  border-gray-300 rounded-md`}
-          >
-            <img
-              className="w-full h-full"
-              src={`assets/${framer}`}
-              alt="product frame"
-            />
-          </div>
-        ))}
-      </div>
-        <div className="details p-4 md:p-0 md:overflow-y-auto md:max-h-[32rem] md:flex flex-col gap-3">
+
+        <div className="details p-4 md:p-0 lg:overflow-y-auto md:max-h-[50rem] lg:max-h-[32rem] md:flex flex-col gap-3">
           <h2 className="product-name text-base font-bold md:text-lg">
             Samsung Galaxy Series Ultra 24
           </h2>
@@ -190,9 +184,19 @@ const SelectedItem = () => {
           </div>
           <div className="add-item flex gap-4 flex-wrap items-center mt-4">
             <div className="add-sub-btn flex justify-between items-center px-7 w-44 h-10 rounded-4xl opacity-80 backdrop-blur-md bg-gray-100">
-              <button onClick={handleDecrement} className="text-lg font-medium cursor-pointer">-</button>
+              <button
+                onClick={handleDecrement}
+                className="text-lg font-medium cursor-pointer"
+              >
+                -
+              </button>
               <button className="text-lg font-medium">{numItems}</button>
-              <button onClick={handleIncrement} className="text-lg font-medium cursor-pointer">+</button>
+              <button
+                onClick={handleIncrement}
+                className="text-lg font-medium cursor-pointer"
+              >
+                +
+              </button>
             </div>
             <div className="flex flex-col text-base font-normal whitespace-break-spaces flex-wrap">
               <p>
@@ -203,7 +207,9 @@ const SelectedItem = () => {
           </div>
           <div className="product Description w-11/12 mt-4 h-96">
             <div className="title flex px-4 border h-14 items-center border-gray-100">
-              <h2 className="md:text-lg text-base font-semibold">PRODUCT DESCRIPTION</h2>
+              <h2 className="md:text-lg text-base font-semibold">
+                PRODUCT DESCRIPTION
+              </h2>
             </div>
             <div className="des flex flex-col border border-gray-100 px-4 py-3 md:flex-row gap-4 items-center md:items-start">
               {/* Image on the left */}
@@ -235,21 +241,21 @@ const SelectedItem = () => {
                   with a durable Armor Aluminum frame and Gorilla Glass Victus
                   protection, it combines strength with elegance.
                 </p>
-                {/* Add more details as needed */}
               </div>
             </div>
           </div>
         </div>
       </div>
-     
-      <div className="fixed bottom-0 bg-white h-16 w-full px-9 gap-4 flex items-center justify-between md:hidden">
-        <button className="h-9 w-28 bg-green-500 rounded-sm text-white font-medium">
+
+      <div className="fixed bottom-0 left-0 w-full bg-white py-3 px-4 flex gap-3 items-center justify-between shadow-lg md:hidden z-20">
+        <button className="flex-1 flex items-center justify-center h-12 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-full shadow transition">
+          <ShoppingCart className="w-5 h-5 mr-2" />
           Add to Cart
         </button>
-        <button className="h-9 w-28 bg-orange-500 rounded-sm text-white font-medium">
+        <button className="flex-1 flex items-center justify-center h-12 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-full shadow transition">
+          <HeartPlus className="w-5 h-5 mr-2" />
           Buy Now
         </button>
-
       </div>
     </div>
   );
