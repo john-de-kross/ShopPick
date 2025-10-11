@@ -20,6 +20,26 @@ const SelectedItem = () => {
   ];
   const [frame, setFrame] = useState("s24.png");
   const [numItems, setNumItems] = useState(1);
+  const [startX, setStartX] = useState(0);
+
+  const handleTouchStart = (e) => {
+    setStartX(e.touches[0].clientX)
+    
+  };
+
+  const handleTouchEnd = (e) => {
+    const endX = e.changedTouches[0].clientX;
+    const currentIndex = productFrames.indexOf(frame);
+    if (startX - endX > 50) {
+      const nextIndex = (currentIndex + 1) % productFrames.length
+      
+      setFrame(productFrames[nextIndex])
+    } else if (endX - startX > 50) {
+      const prevIndex = (currentIndex - 1 + productFrames.length) % productFrames.length;
+      setFrame(productFrames[prevIndex])
+      
+    }
+  }
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
@@ -59,7 +79,10 @@ const SelectedItem = () => {
           ))}
         </div>
         <div className="flex flex-col  items-center">
-          <div className="relative product-img w-full md:w-11/12 lg:w-full md:max-w-96 md:rounded-md aspect-[4/3]  bg-gray-100 h-96 flex justify-center items-center">
+          <div
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            className="relative product-img w-full md:w-11/12 lg:w-full md:max-w-96 md:rounded-md aspect-[4/3]  bg-gray-100 h-96 flex justify-center items-center">
             <img
               className="w-full h-full bg-center object-contain"
               src={`/assets/${frame}`}
